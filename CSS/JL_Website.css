@@ -1,5 +1,21 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0%;
+    opacity: 1;
+    transition: 3s opacity;
+    letter-spacing: .2vw; /* vw is relative measurement where 1vw is equal to 1% of the viewport width */
+    font-family: Avant Garde, Helvetica;
+    font-size: 1.5vw;
+    overflow-x: hidden; /* This prevents the horizontal scroll bar from appearing when the quote bar is hovered over */
+    user-select: none; /* This prevents the text on the webpage from being highlighted by the user */
+}
+
+/* This section contributes to the fade effect for the page that occurs when the page is loaded */
+body.fade-out {
+    opacity: .1; /* This sets the level of opacity at the start of the page load */
 }
 
 h1 {
@@ -22,10 +38,10 @@ h1:hover {
 p {
     font-family: Roboto, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: justify;
-    letter-spacing: 1px;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    letter-spacing: .1vw;
+    font-size: 1.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
 }
 
 p:hover {
@@ -40,6 +56,16 @@ p:hover {
 .center:hover {
     transition: transform 2s;
     transform: scale(1.1);
+}
+
+a { /* Anchor element */
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+q { /* Quotation element */
+    font-style: italic;
 }
 
 img {
@@ -90,10 +116,10 @@ footer {
     float: left;
     display: block;
     color: #FFF;
-    padding: 14px 16px;
+    padding: .75vw 1vw;
     text-decoration: none;
     font-family: Roboto, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 20px;
+    font-size: 1.5vw;
     text-align: center;
     position: relative;
     -webkit-animation: moveNavText 5.75s;
@@ -116,6 +142,7 @@ footer {
     background-color: #FFF;
     color: #000;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .Navbar a.active {
@@ -130,8 +157,8 @@ footer {
     z-index: -1;
 }
 
-@media screen and (max-width: 576px;) {
-    #Typing_video {
+@media screen and (max-width: 576px) {
+    #Green_lights {
         display: none;
     }
 }
@@ -140,7 +167,8 @@ footer {
     background: rgba(35, 71, 41, 0.2);
     color: #000;
     width: 100%;
-    padding: 20px;
+    height: 100vh;
+    padding-top: 2vh;
     position: relative;
     -webkit-animation: moveVideoText 5.75s;
     animation: moveVideoText 5.75s;
@@ -151,6 +179,101 @@ footer {
     to {top: 0vw;}
 }
 
+/* SLIDESHOW */
+#slideshow_background {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.mySlides {
+    display: none; /* This prevents the images from being displayed.  We will use JS to display them. */
+}
+
+#Slideshow_Container {
+    width: 39.5vw;
+    height: auto;
+    padding-top: 4%;
+    position: relative;
+    margin: auto;
+}
+
+.Slideshow_Images {
+    vertical-align: middle;
+    height: auto;
+    box-shadow: 0px 5px 10px 12px rgba(0, 0, 0, .75);
+    width: 100%;
+}
+
+.Previous, .Next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 2vw;
+    color: darkgray;
+    font-weight: bold;
+    font-size: 1.5vw;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    transition: 0.6s ease;
+}
+
+.Next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.Previous:hover, .Next:hover {
+    background-color: rgba(0 , 0, 0, 0.8);
+    color: white;
+}
+
+.text {
+    color: white;
+    padding: 1vw;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-family: Roboto, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: .1vw;
+    font-size: 1.5vw;
+    background-color: rgba(0, 0, 0, .75);
+    font-weight: bold;
+    border-radius: 0 0 7px 7px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 1vw;
+    width: 1vw;
+    margin: .25vw;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block; /* Allows the dots to sit next to eachother rather than on a new line */
+    transition: background-color 0.6s ease;
+    z-index: 1;
+}
+
+.active, .dot:hover {
+    background-color: black;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+    from {opacity: .4;}
+    to {opacity: 1;}
+}
+
+@keyframes fade {
+    from {opacity: .4;}
+    to {opacity: 1;}
+}
+
 * {
     box-sizing: border-box;
 }
@@ -158,7 +281,7 @@ footer {
 .Column_1 {
     float: left;
     width: 50%;
-    padding: 10px;
+    padding: 1.6%;
     padding-top: 3%;
     height: 400px;
     background-color: #FFF;
@@ -173,8 +296,7 @@ footer {
 .Column_2 {
     float: left;
     width: 50%;
-    padding: 10px;
-    padding-top: 1.9%;
+    padding: 1.6%;
     height: 400px;
     background-color: rgb(0, 60, 20);
 }
@@ -185,52 +307,72 @@ footer {
 }
 
 .Row:after {
-    content: "";
+    content: ""; /* By leaving this blank, we are allowing the footer to be displayed - removing it makes the footer overwrite a column */
     display: table;
-    clear: both;
+    clear: both; /* This clears any other element from floating to the left or right of an element */
 }
 
-input[type=text] {
-    background-color: rgb(165, 200, 165);
+/* POPUP CONTAINER */
+.form-popup {
+    border: 3px solid #F0F1F0;
+    z-index: 8;
+    display: none;
+    position: fixed;
+    bottom: .5vw;
+    right: .5vw;
+}
+
+.form-container {
+    max-width: 49vw;
+    padding: 1vw;
+    background-color: white;
+}
+
+.form-container input[type=text] {
     width: 100%;
-    padding: 12px;
-    border: 1px solid darkgreen;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
+    padding: .93vw;
+    margin: .6vw 0 .6vw 0;
+    border: none;
+    background: gainsboro;
+    font-size: 1vw;
+}
+
+button {
     font-family: Roboto, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: .3vw;
+    font-size: 1.5vw;
+    font-weight: bold;
+    padding: 1.5vw;
+    cursor: pointer;
+    width: 100%;
+    height: auto;
 }
 
-input[type=text]:hover {
-    box-shadow: 0 0 5px rgb(5, 60, 0);
+button:hover, .form-container .btn:hover {
+    color: white;
+    background-color: black;
+    transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    border-color: silver;
 }
 
-input[type=submit] {
+.form-container .btn {
+    background-color: white;
+    color: black;
+    border-color: black;
+    margin-bottom: 1vh;
+}
+
+.form-container .cancel {
     background-color: black;
     color: white;
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: Roboto, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-color: gray;
 }
 
-input[type=submit]:hover {
-    background-color: white;
-    color: darkgreen;
-    transform: scale(1.3);
-    transition: transform 1.5s;
-}
-
-form {
-    border-radius: 5px;
-    background-color: #FFF;
-    padding: 10px;
-    font-family: Roboto, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+.form-container .cancel:hover {
+    color: white;
+    background-color: darkred;
+    transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    border-color: black;
 }
