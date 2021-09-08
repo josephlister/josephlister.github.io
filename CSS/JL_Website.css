@@ -164,7 +164,6 @@ footer {
 }
 
 .Video_Text {
-    background: rgba(35, 71, 41, 0.2);
     color: #000;
     width: 100%;
     height: 100vh;
@@ -188,7 +187,7 @@ footer {
     display: none; /* This prevents the images from being displayed.  We will use JS to display them. */
 }
 
-#Slideshow_Container {
+#Slideshow-Container {
     width: 39.5vw;
     height: auto;
     padding-top: 4%;
